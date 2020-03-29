@@ -1,19 +1,15 @@
 # Routes
 # This file defines all application routes (Higher priority routes first)
 
-# An example controller showing a sample home page
-GET     /                               controllers.HomeController.index
+GET     /mastermind/newgame/:codeLength/:numberOfOptions    controllers.ApiController.newGame(codeLength:Int,numberOfOptions:Int)
+
+GET     /mastermind/solution                                controllers.ApiController.getSolution
+
+GET     /mastermind/evaluation/:guess                       controllers.ApiController.evalGuess(guess)
+
+GET     /mastermind/*error                                  controllers.ApiController.invalidRequest(error)
+
+GET     /mastermind/                                        controllers.ApiController.index
+
 # Map static resources from the /public folder to the /assets URL path
-GET     /assets/*file                   controllers.Assets.versioned(path="/public", file: Asset)
-
-
-
-# Ping test to check if the API is working
-GET     /mastermind/ping                controllers.ApiController.ping
-
-
-# returns the solution as a JSON array
-GET     /mastermind/solution            controllers.ApiController.getSolution
-
-# 
-GET     /mastermind/evaluation/:guess   controllers.ApiController.evalGuess(guess)
+GET     /assets/*file                                       controllers.Assets.versioned(path="/public", file: Asset)
