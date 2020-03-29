@@ -48,14 +48,10 @@ object Code {
     * @return: tuple with number of correct guessed pins and number of wrong placed pins
     */
   def eval(guess:Array[Int]):Option[(Int,Int)] = {
-    val temp1 = guess.length
-    val temp2 = solution.length
-    print(s"guess.length: $temp1")
-    print(s"solution.length: $temp2")
-    print(guess.mkString(" "))
+  
     if(guess.length == solution.length) {
       evalCounter += 1
-      val tempSolution = solution
+      val tempSolution = solution.clone()
       var allRight:Int = 0
       var rightColor:Int = 0
       for(i <- 0 until tempSolution.length){
