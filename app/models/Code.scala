@@ -39,11 +39,6 @@ object Code {
   def getNumberOfOptions:Int = numberOfOptions
   def getCodeLength:Int = codeLength
 
-  def stringToArray(guess:String) = {
-    guess.split('.').map(_.toInt)
-  }
-
-
 
   /**
     * evaluates a given guess and returns the number of correct guessed pins
@@ -52,7 +47,6 @@ object Code {
     * @return: tuple with number of correct guessed pins and number of wrong placed pins
     */
   def evaluateGuess(guess:Array[Int]):Option[(Int,Int)] = {
-  
     if(guess.length == solution.length) {
       evalCounter += 1
       val tempSolution = solution.clone()

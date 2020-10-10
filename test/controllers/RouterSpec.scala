@@ -31,6 +31,13 @@ class RouterSpec extends PlaySpec with GuiceOneAppPerTest {
       contentAsString(reply) must include ("correct")
       contentAsString(reply) must include ("wrongPlace")
     }
+    
+    "render bad request when length guess is different than code" in {
+      val request = FakeRequest(GET, "/mastermind/evaluation/1.2.4.3.4")
+      val reply = route(app, request).get
+      status(reply) mustBe 400 //bad request
+      contentAsString(reply) must include ("length of guess is different than code length")
+    }
 
     "render the solution page from the router" in {
       val request = FakeRequest(GET, "/mastermind/solution")

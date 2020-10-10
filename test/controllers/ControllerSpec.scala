@@ -5,12 +5,6 @@ import org.scalatestplus.play.guice._
 import play.api.test._
 import play.api.test.Helpers._
 
-/**
- * Add your spec here.
- * You can mock out a whole application including requests, plugins etc.
- *
- * For more information, see https://www.playframework.com/documentation/latest/ScalaTestingWithScalaTest
- */
 class ApiControllerSpec extends PlaySpec with GuiceOneAppPerTest with Injecting {
 
   "ApiController" should {
@@ -39,6 +33,18 @@ class ApiControllerSpec extends PlaySpec with GuiceOneAppPerTest with Injecting 
       contentAsString(reply) must include ("wrongPlace")
     }
 
+    "returns bad request when length guess is different than code" in {
+      val controller = inject[ApiController]
+      val reply = controller.evalGuess("1.2.3.4.5").apply(FakeRequest())
+      contentAsString(reply) must include ("length of guess is different than code length")
+    }
+
+    "returns bad request when input is not valid" in {
+      val controller = inject[ApiController]
+      val reply = controller.evalGuess("dfsdfdsf").apply(FakeRequest())
+      contentAsString(reply) must include ("guess is not valid")
+    }
+    
     "render the json from the solution" in {
       val controller = inject[ApiController]
       val reply = controller.getSolution().apply(FakeRequest())

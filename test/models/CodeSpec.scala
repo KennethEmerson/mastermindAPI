@@ -2,10 +2,15 @@ import org.scalatest._
 import org.scalatest.prop.TableDrivenPropertyChecks._
 import models.Code
 
-class CalculatorSpec extends FlatSpec with Matchers {
+class CodeSpec extends FlatSpec with Matchers {
   "The Code object" should "generate an array of the correct length" in {
     Code.createNewGame(4,4)
     Code.getSolution.length should be (4)
+  }
+
+  it should "return none when input is incorrect" in {
+    Code.createTestSolution(Array(4,3,2,2))
+    Code.evaluateGuess(Array(1,2,3,4)) should be (Some(0,3)) 
   }
 
   it should "calculate the amount of correct placed colors" in {
