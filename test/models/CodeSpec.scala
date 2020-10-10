@@ -5,7 +5,17 @@ import models.Code
 class CodeSpec extends FlatSpec with Matchers {
   "The Code object" should "generate an array of the correct length" in {
     Code.createNewGame(4,4)
-    Code.getSolution.length should be (4)
+    Code.getCodeLength should be (4)
+  }
+
+  it should "return the correct number of options" in {
+    Code.createNewGame(4,6)
+    Code.getNumberOfOptions should be (6)
+  }
+
+  it should "return the solution as a string" in {
+    Code.createTestSolution(Array(4,3,2,2))
+    Code.toString should be ("4.3.2.2")
   }
 
   it should "return none when input is incorrect" in {

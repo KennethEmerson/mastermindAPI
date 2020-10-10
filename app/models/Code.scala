@@ -28,11 +28,10 @@ object Code {
   }
   
 
-
   /**
     * @return the correct solution as a strin
     */
-  override def toString(): String = solution.mkString(" ")
+  override def toString(): String = solution.mkString(".")
   
   def getSolution:Array[Int] = solution
   def getEvalCounter:Int = evalCounter
