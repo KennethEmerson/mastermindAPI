@@ -1,5 +1,5 @@
 name := """MastermindApi"""
-organization := "RandomForest.be"
+organization := ""
 
 version := "1.0-SNAPSHOT"
 

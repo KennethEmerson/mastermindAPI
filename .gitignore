@@ -18,3 +18,4 @@ server.pid
 .g8
 .metals
 .vscode
+scalastyle-config.xml
