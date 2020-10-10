@@ -2,16 +2,16 @@ package models
 import play.api.libs.json.Json
 
 /**
-  * singleton tha contains the solution and methods to evaluate guesses
+  * singleton that contains the solution and methods to evaluate guesses
   */
 object Code {
-  private var codeLength = 4
-  private var numberOfOptions = 4
-  private var evalCounter = 0
-  private var solution:Array[Int] = Array(1,2,3,4)
-  //private var solution:Array[Int] = create(amount,options)
   
+  private var solution:Array[Int] = Array(0,0,0,0)    //
+  private var codeLength = 4                          //length of code
+  private var numberOfOptions = 4                     //number of possible colors
+  private var evalCounter = 0                         //
   
+
   /** creates a new random solution of pins to guess 
     *
     * @param reqAmount: amount of pins to be guessed
@@ -27,6 +27,8 @@ object Code {
     solution = tempCode
   }
   
+
+
   /**
     * @return the correct solution as a strin
     */
@@ -41,13 +43,15 @@ object Code {
     guess.split('.').map(_.toInt)
   }
 
+
+
   /**
     * evaluates a given guess and returns the number of correct guessed pins
     * and the number of wrongly placed pins
     * @param guess: an array that contains the guess that needs to be evaluated
     * @return: tuple with number of correct guessed pins and number of wrong placed pins
     */
-  def eval(guess:Array[Int]):Option[(Int,Int)] = {
+  def evaluateGuess(guess:Array[Int]):Option[(Int,Int)] = {
   
     if(guess.length == solution.length) {
       evalCounter += 1
@@ -75,7 +79,14 @@ object Code {
     else None
   }
 
-  def createTestCode(testCode:Array[Int]):Unit = {
-   solution = testCode
+
+  /**
+    * this function is only used for testing purposes.
+    *Allows to inject a solution instead of a random generated one
+    * @param testCode : code to use as solution
+    */
+
+  def createTestSolution(testSolution:Array[Int]):Unit = {
+   solution = testSolution
   }
 }

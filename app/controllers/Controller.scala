@@ -21,6 +21,7 @@ class ApiController @Inject()(cc: ControllerComponents)
     Ok(startGame)
   }
 
+  // handles the request for the solution
   def getSolution() = Action { implicit request => 
     val solution = Json.obj(
       "numberOfGuesses"  -> Code.getEvalCounter,  
@@ -28,8 +29,9 @@ class ApiController @Inject()(cc: ControllerComponents)
     Ok(solution)
   }
   
+  // handles the request for evaluating a guess
   def evalGuess(guess: String) = Action { implicit request => 
-    val evalValues:Option[(Int,Int)] = Code.eval(Code.stringToArray(guess)) 
+    val evalValues:Option[(Int,Int)] = Code.evaluateGuess(Code.stringToArray(guess)) 
     
     if(evalValues != None){
         val evaluation = Json.obj(
