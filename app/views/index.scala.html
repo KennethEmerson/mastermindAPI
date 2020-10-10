@@ -1,9 +1,34 @@
 
 @main("Mastermind API") {
-  <h1>Mastermind API</h1>
-  <div>This API allows you to play a game of Mastermind</div>
-  <div>the various GET requests are the following:</div>
-  <h2>/mastermind/newgame/x/y</h2>
+  <h1 class="center">Mastermind API</h1>
+  <div class="center">This basic API allows you to play a game of Mastermind</div>
+  <div class="center">the various GET requests are the following:
+  
+  </div>
+  
+  <table class="center">
+  <tr>
+    <th>Page</th>
+    <th>URL</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>ask to start a new game</td>
+    <td>/mastermind/newgame/x/y</td>
+    <td>the x represents the number of pins, y the number of colors.</td>
+  </tr>
+  <tr>
+    <td>ask to evaluate a guess</td>
+    <td>/mastermind/evaluation/?</td>
+    <td>the ? represents the guessed color pins as integers divided by a . example : 1.2.3.4</td>
+  </tr>
+  <tr>
+    <td>ask to return the solution</td>
+    <td>/mastermind/solution</td>
+    <td>returns the solution</td>
+  </tr>
+</table>
+
   
   
 }

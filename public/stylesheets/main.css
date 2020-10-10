@@ -1,0 +1,29 @@
+
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+table {
+  font size="2"
+  font-family: arial, sans-serif;
+  order: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+  width = 70%
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+h1 {text-align: center;}
+p {text-align: center;}
+div {text-align: center;}

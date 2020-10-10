@@ -32,6 +32,7 @@ class ApiController @Inject()(cc: ControllerComponents)
     Ok(solution)
   }
   
+  //function to transform inputstring to guess array
   def stringToArray(guess:String):Option[Array[Int]] = {
     try{
       Some(guess.split('.').map(_.toInt))
@@ -43,7 +44,8 @@ class ApiController @Inject()(cc: ControllerComponents)
 
   // handles the request for evaluating a guess
   def evalGuess(input: String) = Action { implicit request => 
-    val guess = stringToArray(input)
+    
+    val guess = stringToArray(input) //will return None if input is invalid
     
     if(guess != None){
       val evalValues:Option[(Int,Int)] = Code.evaluateGuess(guess.get) 
@@ -60,6 +62,7 @@ class ApiController @Inject()(cc: ControllerComponents)
     else BadRequest("guess is not valid")
   }
 
+  // handles invalid requests
   def invalidRequest(error:String) = Action {
     BadRequest("Invalid Request")
   }
